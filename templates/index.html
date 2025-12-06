@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Free Fire & PUBG Slot Booking</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            color: #e5e7eb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background: rgba(15,23,42,0.9);
+            padding: 24px 28px;
+            border-radius: 16px;
+            max-width: 420px;
+            width: 100%;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+            border: 1px solid rgba(148,163,184,0.4);
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 0;
+            margin-bottom: 4px;
+            font-size: 1.6rem;
+        }
+
+        p.subtitle {
+            text-align: center;
+            margin-top: 0;
+            margin-bottom: 18px;
+            font-size: 0.9rem;
+            color: #9ca3af;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 4px;
+            font-size: 0.9rem;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 8px 10px;
+            margin-bottom: 12px;
+            border-radius: 8px;
+            border: 1px solid #4b5563;
+            background: #020617;
+            color: #f9fafb;
+            box-sizing: border-box;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: #38bdf8;
+            box-shadow: 0 0 0 1px #38bdf8;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            border-radius: 999px;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1rem;
+            background: linear-gradient(90deg, #22c55e, #16a34a);
+            color: #f9fafb;
+            margin-top: 4px;
+        }
+
+        button:hover {
+            opacity: 0.9;
+        }
+
+        .flash {
+            padding: 8px 10px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            margin-bottom: 10px;
+        }
+
+        .flash-success {
+            background: rgba(22,163,74,0.15);
+            border: 1px solid #22c55e;
+        }
+
+        .flash-error {
+            background: rgba(220,38,38,0.15);
+            border: 1px solid #f97373;
+        }
+
+        .small {
+            font-size: 0.75rem;
+            color: #9ca3af;
+            margin-top: 8px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Slot Booking</h1>
+    <p class="subtitle">Free Fire & PUBG Custom Room</p>
+
+    <!-- Flash messages -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="flash flash-{{ category }}">
+            {{ message }}
+          </div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
+    <form method="POST">
+        <label for="name">Player Name *</label>
+        <input type="text" id="name" name="name" placeholder="Enter your name" required>
+
+        <label for="phone">Phone Number *</label>
+        <input type="tel" id="phone" name="phone" placeholder="Enter your WhatsApp / mobile" required>
+
+        <label for="game">Select Game *</label>
+        <select id="game" name="game" required>
+            <option value="">-- Choose --</option>
+            <option value="Free Fire">Free Fire</option>
+            <option value="PUBG">PUBG</option>
+        </select>
+
+        <label for="date">Date *</label>
+        <input type="date" id="date" name="date" required>
+
+        <label for="time_slot">Time Slot *</label>
+        <select id="time_slot" name="time_slot" required>
+            <option value="">-- Choose --</option>
+            <option value="4:00 PM - 5:00 PM">4:00 PM - 5:00 PM</option>
+            <option value="5:00 PM - 6:00 PM">5:00 PM - 6:00 PM</option>
+            <option value="6:00 PM - 7:00 PM">6:00 PM - 7:00 PM</option>
+            <option value="7:00 PM - 8:00 PM">7:00 PM - 8:00 PM</option>
+        </select>
+
+        <label for="ign">In-Game Name / ID</label>
+        <input type="text" id="ign" name="ign" placeholder="Your FF UID or PUBG ID">
+
+        <button type="submit">Book Slot</button>
+    </form>
+
+    <p class="small">Your booking will be saved in Google Sheets.</p>
+</div>
+</body>
+</html>
