@@ -18,7 +18,7 @@ creds_info = json.loads(os.environ["GOOGLE_CREDENTIALS"])
 creds = Credentials.from_service_account_info(creds_info, scopes=SCOPE)
 client = gspread.authorize(creds)
 
-SHEET_NAME = "FF-PUBG-Slot-Bookings"
+SHEET_NAME = "FF PUBG Slot Bookings"
 sheet = client.open(SHEET_NAME).sheet1
 
 
@@ -54,3 +54,4 @@ def index():
 
 if __name__ == "__main__":
     app.run(debug=True)
+
